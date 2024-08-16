@@ -1,0 +1,7 @@
+# PostgreSQL
+# ------------------------------------------------------------------------------
+POSTGRES_HOST=127.0.0.1
+POSTGRES_PORT=5432
+POSTGRES_DB=micro_saas
+POSTGRES_USER=ulkqAMXLKFohocYhejAlwNpliuHmnIku
+POSTGRES_PASSWORD=UEtq1MkZrXiq0IPYisdZD7L2ldyUDO4xcgMc1iPU7mgm62F1cPmVu4QJY9SVxKls
