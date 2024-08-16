@@ -1,0 +1,19 @@
+services:
+  golang:
+    build:
+      # Set the build context to the root of the project
+      context: .
+      # Specify the path to the Dockerfile
+      dockerfile: ./compose/development/golang/Dockerfile
+    image: microsaas_dev_golang
+    container_name: golang
+    volumes:
+      - .:/app:z
+    env_file:
+      # Load environment variables from the respective env files
+      - ./.envs/.development/.golang
+      - ./.envs/.development/.postgres
+    ports:
+      # Expose port 8000 for the Golang service
+      - "8000:8000"
+    command: /start
