@@ -1,12 +1,12 @@
 services:
-  golang:
+  golang: &golang
     build:
-      # Set the build context to the root of the project
       context: .
-      # Specify the path to the Dockerfile
       dockerfile: ./compose/development/golang/Dockerfile
     image: microsaas_dev_golang
     container_name: golang
+    depends_on:
+      - postgres
     volumes:
       - .:/app:z
     env_file:
@@ -17,3 +17,17 @@ services:
       # Expose port 8000 for the Golang service
       - "8000:8000"
     command: /start
+  postgres: &postgres
+    build:
+      context: .
+      dockerfile: ./compose/development/postgres/Dockerfile
+    image: microsaas_dev_postgres
+    container_name: postgres
+    restart: always
+    volumes:
+      - postgres-db:/var/lib/postgresql/data:z
+      - postgres-db:/var/lib/postgresql/backups:z
+    env_file:
+      - ./.envs/.development/.postgres
+    ports:
+      - "5432:5432"
